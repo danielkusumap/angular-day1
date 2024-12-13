@@ -1,0 +1,10 @@
+<div *ngIf="pokemon" class="grid grid-cols-1 gap-4 p-4 border rounded-lg shadow-md bg-white w-52">
+    <img
+      [src]="pokemon.image"
+      [alt]="pokemon.name"
+      class="w-24 max-w-xs h-auto object-contain mb-4"
+    />
+    
+    <p class="text-lg font-semibold mb-2 text-center">{{ pokemon.name }}</p>
+  </div>
+  
