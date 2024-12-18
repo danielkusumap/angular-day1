@@ -1,0 +1,40 @@
+<table class="table-auto w-full border-collapse border border-gray-400">
+    <thead>
+      <tr>
+        <th class="border border-gray-400 px-4 py-2">ID</th>
+        <th class="border border-gray-400 px-4 py-2">First Name</th>
+        <th class="border border-gray-400 px-4 py-2">Last Name</th>
+        <th class="border border-gray-400 px-4 py-2">Address</th>
+        <th class="border border-gray-400 px-4 py-2">Email</th>
+        <th class="border border-gray-400 px-4 py-2">Phone Number</th>
+        <th class="border border-gray-400 px-4 py-2">Buy Option</th>
+        <th class="border border-gray-400 px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td class="border border-gray-400 px-4 py-2">{{ row.id }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.firstName }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.lastName }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.address }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.email }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.phone }}</td>
+        <td class="border border-gray-400 px-4 py-2">{{ row.pokemonToBuy }}</td>
+        <td class="border border-gray-400 px-4 py-2">
+          <button 
+            (click)="editRow(row.id)" 
+            class="mr-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Edit
+          </button>
+          <button 
+            (click)="deleteRow(row.id)" 
+            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

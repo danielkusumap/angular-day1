@@ -8,18 +8,37 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <div class="min-h-screen bg-gray-100 flex flex-col">
-  <nav>
-    <div class="container mx-10 items-center p-4">
-      <a class="text-xl font-bold mx-10 hover:text-gray-400" routerLink="/">training day 1</a>
-      <a class="text-xl font-bold mx-10 hover:text-gray-400" routerLink="/biodata">Biodata</a>
-      <a class="text-xl font-bold hover:text-gray-400" routerLink="/pokemon">Pokemon</a>
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a
+        class="text-2xl font-bold text-gray-800 hover:text-blue-500 transition-colors duration-200"
+        routerLink="/"
+      >
+        Training Day 1
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="space-x-6 hidden md:flex">
+        <a
+          class="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors duration-200"
+          routerLink="/biodata"
+        >
+          Biodata
+        </a>
+        <a
+          class="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors duration-200"
+          routerLink="/pokemon"
+        >
+          Pokemon
+        </a>
+      </div>
     </div>
   </nav>
+
   <main class="flex-grow container mx-auto p-6">
     <router-outlet></router-outlet>
   </main>
 </div>
-
 
 <!-- <style>
   :host {
@@ -191,8 +210,6 @@
   }
 </style> -->
 
-
-
 <!-- <main class="main">
   <div class="content">
     <div class="left-side">
@@ -349,6 +366,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-

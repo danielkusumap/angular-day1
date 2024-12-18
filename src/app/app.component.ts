@@ -12,4 +12,13 @@ export class AppComponent {
   isVisible = true;
 
   nama_lengkap = "daniel kusuma pratama"
+  isLoading = false;
+
+  startLoading() {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  }
 }

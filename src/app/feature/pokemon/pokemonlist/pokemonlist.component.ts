@@ -1,6 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import axios from 'axios';
 import { PokemonService } from '../../../services/pokemon.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pokemonlist',
@@ -9,14 +11,11 @@ import { PokemonService } from '../../../services/pokemon.service';
   standalone: false
 })
 export class PokemonlistComponent implements OnInit, OnChanges{
-  nama = 'daniel kusuma pratama';
-  umur = 23;
-  tanggal_lahir = new Date(2001, 1, 27);
-  umur_in_days = 0;
+
   result_pokemon: any;
   pokemonList: any[] = [];
 
-  constructor(private pokemonService: PokemonService){};
+  constructor(private pokemonService: PokemonService, private router: Router){};
 
   filteredPokemon: any[] = [];
   paginatedPokemon: any[] = [];
@@ -145,5 +144,9 @@ export class PokemonlistComponent implements OnInit, OnChanges{
 
   toggleTheme() {
     this.theme = this.theme === 'light' ? 'dark' : 'light';
+  }
+
+  detailBuy(){
+    this.router.navigate(['/detail-buy'])
   }
 }

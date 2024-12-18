@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BiodataModule } from './feature/biodata/biodata.module';
 import { PokemonModule } from './feature/pokemon/pokemon.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { PokemonModule } from './feature/pokemon/pokemon.module';
     BrowserModule,
     AppRoutingModule,
     BiodataModule,
-    PokemonModule
+    PokemonModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

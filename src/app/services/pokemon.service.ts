@@ -1,24 +1,12 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-
-  // private apiUrl = 'https://pokeapi.co/api/v2';
-
-  // constructor() { }
-
-  // async getPokemon(limit: number = 20){
-  //   const response = await axios.get(`${this.apiUrl}/pokemon?limit=${limit}`);
-  //   return response.data.results;
-  // }
-
-  // async getPokemonDetail(url: string){
-  //   const response = await axios.get(url);
-  //   return response.data;
-  // }
 
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -38,6 +26,11 @@ export class PokemonService {
 
   async getPokemonByName(name: string) {
     const response = await axios.get(`${this.apiUrl}/${name}`);
+    return response.data;
+  }
+
+  async getPokemonEvolution(url: string){
+    const response = await axios.get(url);
     return response.data;
   }
 }

@@ -1,34 +1,85 @@
-<div>
-    <input [value]="totalPokemon" (input)="onTotalPokemonChange($event)" type="number" class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    <button (click)="fetchPokemon()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">fetch pokemon</button>
-</div>
+<div class="flex gap-4 items-center mb-4">
+  <div>
+    <input
+      [value]="totalPokemon"
+      (input)="onTotalPokemonChange($event)"
+      type="number"
+      class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button
+      (click)="fetchPokemon()"
+      class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+    >
+      Fetch Pokemon
+    </button>
+  </div>
 
-<div>
-    <input [value]="searchPokemonName" (input)="onNameChange($event)" type="text" class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    <button (click)="getPokemonByName()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">by name</button>
+  <div>
+    <input
+      [value]="searchPokemonName"
+      (input)="onNameChange($event)"
+      type="text"
+      class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button
+      (click)="getPokemonByName()"
+      class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+    >
+      By Name
+    </button>
+  </div>
+
+  <div>
+    <button
+      (click)="detailBuy()"
+      class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+    >
+      Detail Buy
+    </button>
+  </div>
 </div>
 
 <div class="grid grid-cols-5 gap-4 p-4">
-    <div *ngFor="let item of paginatedPokemon"class="border rounded-lg shadow-md p-4 bg-white flex flex-col items-center">
-        <img
-        [src]="item.image"
-        [alt]="item.name"
-        class="w-24 h-24 object-contain mb-4"
-        />
-        
-        <p class="text-lg font-semibold mb-2">{{ item.name }}</p>
-        
-        <button (click)="showDetail(item)" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Detail</button>
-    </div>
-</div>
-<div>
+  <div
+    *ngFor="let item of paginatedPokemon"
+    class="border rounded-lg shadow-md p-4 bg-white flex flex-col items-center"
+  >
+    <img
+      [src]="item.image"
+      [alt]="item.name"
+      class="w-24 h-24 object-contain mb-4"
+    />
 
+    <p class="text-lg font-semibold mb-2">{{ item.name }}</p>
+
+    <button
+      (click)="showDetail(item)"
+      class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+    >
+      Detail
+    </button>
+  </div>
 </div>
-<div class = "grid grid-cols-3 gap-4 p-4">
-    <button [disabled]="currentPage === 1" (click)="previousPage()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-300">prev</button>
-    <div>Current page: {{currentPage}} | Total pages: {{totalPages}} | Total pokemon: {{totalPokemon}}</div>
-    <button [disabled]="currentPage === totalPages" (click)="nextPage()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-300">next</button>
+<div></div>
+<div class="grid grid-cols-3 gap-4 p-4">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="previousPage()"
+    class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-300"
+  >
+    prev
+  </button>
+  <div>
+    Current page: {{ currentPage }} | Total pages: {{ totalPages }} | Total
+    pokemon: {{ totalPokemon }}
+  </div>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="nextPage()"
+    class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-300"
+  >
+    next
+  </button>
 </div>
-  
 
 <app-pokemondetail [pokemon]="toChild"></app-pokemondetail>
