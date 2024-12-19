@@ -5,12 +5,13 @@ import { PokemondetailComponent } from './pokemondetail/pokemondetail.component'
 import { PokemonDetailPageComponent } from './pokemon-detail-page/pokemon-detail-page.component';
 import { BuyPokemonComponent } from './buy-pokemon/buy-pokemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { DetailBuyPokemonComponent } from './detail-buy-pokemon/detail-buy-pokemon.component';
 import { EditBuyPokemonComponent } from './edit-buy-pokemon/edit-buy-pokemon.component';
 import { RouterModule } from '@angular/router';
-
-
 
 @NgModule({
   declarations: [
@@ -19,13 +20,13 @@ import { RouterModule } from '@angular/router';
     PokemonDetailPageComponent,
     BuyPokemonComponent,
     DetailBuyPokemonComponent,
-    EditBuyPokemonComponent
+    EditBuyPokemonComponent,
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    CommonModule, 
+    ReactiveFormsModule, 
     RouterModule
-  ]
+],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
 })
-export class PokemonModule { }
+export class PokemonModule {}
