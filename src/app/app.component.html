@@ -45,6 +45,14 @@
         <div *ngIf="isLoggedin">
           <a
             class="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors duration-200"
+            routerLink="/cart-detail"
+          >
+            Cart <span>{{cartItemCount$ | async}}</span>
+          </a>
+        </div> 
+        <div *ngIf="isLoggedin">
+          <a
+            class="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors duration-200"
             (click)="logout()"
           >
             Logout

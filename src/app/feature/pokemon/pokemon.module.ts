@@ -12,6 +12,7 @@ import {
 import { DetailBuyPokemonComponent } from './detail-buy-pokemon/detail-buy-pokemon.component';
 import { EditBuyPokemonComponent } from './edit-buy-pokemon/edit-buy-pokemon.component';
 import { RouterModule } from '@angular/router';
+import { PokemonRoutingModule } from '../../routing/pokemon-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,8 @@ import { RouterModule } from '@angular/router';
     DetailBuyPokemonComponent,
     EditBuyPokemonComponent,
   ],
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    RouterModule
-],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, PokemonRoutingModule],
+  exports: [BuyPokemonComponent],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class PokemonModule {}

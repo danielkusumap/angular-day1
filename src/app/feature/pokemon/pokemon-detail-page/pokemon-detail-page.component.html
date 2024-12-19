@@ -56,6 +56,14 @@
 
   <div class="flex justify-center mt-4">
     <button 
+      (click)="addToCart(pokemon)"
+      class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+    >
+      Add to cart
+    </button>
+  </div>
+  <div class="flex justify-center mt-4">
+    <button 
       (click)="formBuy(pokemon)"
       class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
     >

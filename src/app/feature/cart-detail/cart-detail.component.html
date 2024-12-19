@@ -1,0 +1,41 @@
+<li *ngFor="let item of cartItems$ | async" class="p-4 border rounded shadow">
+    <div class="flex items-center justify-between">
+      <div class="flex-shrink-0">
+        <img 
+          [src]="item.pokemon.sprites.front_default" 
+          class="h-32 w-32 rounded-md object-cover" 
+          alt="{{ item.pokemon.name }}" 
+        />
+      </div>
+      <div class="ml-4 flex-1">
+        <p class="font-semibold">{{ item.pokemon.name | uppercase }}</p>
+        <p class="text-sm text-gray-500">Quantity: {{ item.quantity }}</p>
+      </div>
+      <button 
+        class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600 ml-4"
+        (click)="addToCart(item.pokemon)"
+      >
+        Add quantity
+      </button>
+      <button 
+        class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 ml-4"
+        (click)="removeItem(item.pokemon.name)"
+      >
+        Remove
+      </button>
+    </div>
+  </li>
+
+<button 
+  class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 ml-4"
+  (click)="clearCart()"
+>
+  Clear Cart
+</button>
+<button 
+  class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600 ml-4"
+  routerLink="/check-out"
+>
+  Goto Checkout
+</button>
+  

@@ -9,15 +9,21 @@ import { EditBuyPokemonComponent } from './feature/pokemon/edit-buy-pokemon/edit
 import { LoginComponent } from './feature/user/login/login.component';
 import { authActivateGuard } from './guard/authactivate.guard';
 import { CanDeactivateGuard } from './guard/cancomponentdeactivate';
+import { CartDetailComponent } from './feature/cart-detail/cart-detail.component';
+import { CheckOutComponent } from './feature/check-out/check-out.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductListComponent
+    component: ProductListComponent,
   },
   {
     path: 'biodata',
     component: UserComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'pokemon',
@@ -41,8 +47,12 @@ const routes: Routes = [
     canDeactivate: [CanDeactivateGuard]
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'cart-detail',
+    component: CartDetailComponent
+  },
+  {
+    path: 'check-out',
+    component: CheckOutComponent
   }
 ];
 

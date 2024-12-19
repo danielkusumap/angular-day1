@@ -12,11 +12,19 @@ import { environment } from '../environments/environment';
 import { UserModule } from './feature/user/user.module';
 import { AuthModule, getAuth, provideAuth } from '@angular/fire/auth';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { CartComponent } from './feature/cart/cart.component';
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './state/cart/cart.reducer';
+import { CartDetailComponent } from './feature/cart-detail/cart-detail.component';
+import { CheckOutComponent } from './feature/check-out/check-out.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CartComponent,
+    CartDetailComponent,
+    CheckOutComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,13 +33,20 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     PokemonModule,
     ReactiveFormsModule,
     UserModule,
+    StoreModule.forRoot(
+      { cart: cartReducer },
+      {
+        runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true,
+        },
+      }
+    ),
   ],
   providers: [
-    importProvidersFrom(
-      provideFirebaseApp(() => initializeApp(environment.firebase)),
-      provideFirestore(() => getFirestore()),
-      provideAuth(() => getAuth())
-    ),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent]
