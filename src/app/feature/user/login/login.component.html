@@ -1,0 +1,110 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <div class="mb-6">
+        <!-- Tabs -->
+        <div class="flex border-b">
+          <button
+            (click)="selectTab('login')"
+            [class.border-blue-600]="activeTab === 'login'"
+            [class.text-blue-600]="activeTab === 'login'"
+            class="w-1/2 py-2 text-center text-gray-600 border-b-2 hover:text-blue-600"
+          >
+            Login
+          </button>
+          <button
+            (click)="selectTab('register')"
+            [class.border-blue-600]="activeTab === 'register'"
+            [class.text-blue-600]="activeTab === 'register'"
+            class="w-1/2 py-2 text-center text-gray-600 border-b-2 hover:text-blue-600"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+  
+      <!-- Login Form -->
+      <div *ngIf="activeTab === 'login'">
+        <h2 class="mb-6 text-2xl font-bold text-center text-gray-700">Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="mb-4">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-600">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              required
+              class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="text-red-500 text-sm mt-1">
+            <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email</span>
+          </div>
+          <div class="mb-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-600">Password</label>
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              required
+              class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-red-500 text-sm mt-1">
+            Password harus diisi
+          </div>
+          <button
+            type="submit"
+            class="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+  
+      <!-- Register Form -->
+      <div *ngIf="activeTab === 'register'">
+        <h2 class="mb-6 text-2xl font-bold text-center text-gray-700">Register</h2>
+        <form [formGroup]="registerFrom" (ngSubmit)="onRegister()">
+          <div class="mb-4">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-600">email</label>
+            <input
+              id="email"
+              type="text"
+              formControlName="email"
+              required
+              class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          
+          <div class="mb-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-600">Password</label>
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              required
+              class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-600">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              formControlName="confirmPassword"
+              required
+              class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

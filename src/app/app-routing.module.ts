@@ -6,6 +6,9 @@ import { PokemonlistComponent } from './feature/pokemon/pokemonlist/pokemonlist.
 import { PokemonDetailPageComponent } from './feature/pokemon/pokemon-detail-page/pokemon-detail-page.component';
 import { DetailBuyPokemonComponent } from './feature/pokemon/detail-buy-pokemon/detail-buy-pokemon.component';
 import { EditBuyPokemonComponent } from './feature/pokemon/edit-buy-pokemon/edit-buy-pokemon.component';
+import { LoginComponent } from './feature/user/login/login.component';
+import { authActivateGuard } from './guard/authactivate.guard';
+import { CanDeactivateGuard } from './guard/cancomponentdeactivate';
 
 const routes: Routes = [
   {
@@ -18,19 +21,28 @@ const routes: Routes = [
   },
   {
     path: 'pokemon',
-    component: PokemonlistComponent
+    component: PokemonlistComponent,
+     canActivate: [authActivateGuard]
   },
   {
     path: 'pokemon/:id',
-    component: PokemonDetailPageComponent
+    component: PokemonDetailPageComponent,
+    canActivate: [authActivateGuard]
   },
   {
     path: 'detail-buy',
-    component: DetailBuyPokemonComponent
+    component: DetailBuyPokemonComponent,
+    canActivate: [authActivateGuard]
   },
   {
     path: 'edit-buy/:id',
-    component: EditBuyPokemonComponent
+    component: EditBuyPokemonComponent,
+    canActivate: [authActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

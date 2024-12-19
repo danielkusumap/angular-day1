@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, CanDeactivateFn, Router } from '@angular/router';
 import { RealtimeDatabaseService } from '../../../services/realtime-database.service';
 import { PokemonService } from '../../../services/pokemon.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CanComponentDeactivate } from '../../../guard/cancomponentdeactivate';
 
 @Component({
   selector: 'app-edit-buy-pokemon',
   templateUrl: './edit-buy-pokemon.component.html',
   styleUrl: './edit-buy-pokemon.component.css',
 })
-export class EditBuyPokemonComponent implements OnInit {
+export class EditBuyPokemonComponent implements OnInit, CanComponentDeactivate {
   buyId: string = "";
   pokemonToBuy: any[] = [];
+  unsavedChanges: boolean = false;
 
   constructor(private realtimeDatabase: RealtimeDatabaseService, private route: ActivatedRoute, private router : Router, private pokemonService: PokemonService){}
 
@@ -38,8 +40,11 @@ export class EditBuyPokemonComponent implements OnInit {
         })
       );
     }
-    console.log(this.pokemonToBuy)
     this.buyForm.patchValue(buyObject);
+
+    this.buyForm.valueChanges.subscribe(() => {
+      this.unsavedChanges = true;
+    });
   }
 
   async saveChanges(){
@@ -58,9 +63,17 @@ export class EditBuyPokemonComponent implements OnInit {
         this.buyId,
         updatedData
       );
+      this.unsavedChanges = false;
       this.router.navigate(['/detail-buy']);
     } catch (error) {
       console.error('Error updating submission:', error);
     }
+  }
+
+  canDeactivate(): boolean {
+    if (this.unsavedChanges) {
+      return confirm('You have unsaved changes. Do you really want to leave?');
+    }
+    return true;
   }
 }
